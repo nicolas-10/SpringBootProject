@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<form th:action="@{/produits/save}" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Categorie </label>
+        <select name="categorieId" required >
+            <option value="" > Selectionner une catégorie</option>
+            <option th:each="Categorie:${listCategories}"
+                    th:value="${Categorie.id}"
+                    th:text="${Categorie.designation}">
+            </option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">libelle produit</label>
+        <input type="text" name="libelle">
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Qte Seuil</label>
+        <input type="number" name="qteSeuil">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Prix</label>
+        <input type="number" name="prix">
+    </div>
+
+    <input type="submit" value="Enregistrer" class="btn btn-primary">
+</form>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+
+
+

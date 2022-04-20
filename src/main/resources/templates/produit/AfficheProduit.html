@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+
+<body>
+<form th:action="@{/produits/afficher}"  method="get">
+    <input class="form-control form-control-dark w-100" type="text" name="keyword" placeholder="Search" aria-label="search">
+    <input type="submit" value="Rechercher" class="btn btn-primary">
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Seuil</th>
+        <th scope="col">Date de creation</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Categorie</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${Produits}">
+        <th th:text="${item.id}" scope="row"></th>
+        <td th:text="${item.libelle}"></td>
+        <td th:text="${item.qteStock}"></td>
+        <td th:text="${item.qteSeuil}"></td>
+        <td th:text="${item.dateCreation}"></td>
+        <td th:text="${item.prix}"></td>
+        <td th:text="${item.Categorie.designation}"></td>
+        <td>
+            <a th:href="@{/produits/edit/{id}(id=${item.id})}" class="btn btn-info">Edit</a>
+            <a th:href="@{/produits/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
+            <a th:href="@{/approvisionnement/approvisionner/{id}(id=${item.id})}" class="btn btn-warning">Approvisionner </a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>
