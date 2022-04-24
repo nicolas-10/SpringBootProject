@@ -1,60 +1,136 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" th:href="@{/public/login.css}">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Tables</title>
+
+    <!-- Custom fonts for this template -->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link
+            th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/public/styles.css}">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
 </head>
 
-<body>
+<body class="bg-gradient-black">
 
+<nav class="navbar navbar-expand navbar-dark bg-primary" aria-label="Second navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Gstock</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div th:if="${param.error}">
-    <label style="color:red">Invalid username and password.</label>
-</div>
-<div th:if="${param.logout}">
-    <label>
-        You have been logged out.
-    </label>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-md-2"></div>
-        <div class="col-lg-6 col-md-8 login-box">
-            <div class="col-lg-12 login-key">
-                <i class="fa fa-key" aria-hidden="true"></i>
-            </div>
-            <div class="col-lg-12 login-title">
-                ADMIN PANEL
-            </div>
-
-            <div class="col-lg-12 login-form">
-                <div class="col-lg-12 login-form">
-                    <form th:action="@{/login}"  method="post">
-                        <div class="form-group">
-                            <label class="form-control-label">USERNAME</label>
-                            <input type="text" name="username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">PASSWORD</label>
-                            <input type="password" name="password" class="form-control">
-                        </div>
-
-                        <div class="col-lg-12 loginbttm">
-                            <div class="col-lg-6 login-btm login-text">
-                                <!-- Error Message -->
-                            </div>
-                            <div class="col-lg-6 login-btm login-button">
-                                <button type="submit" class="btn btn-outline-primary">LOGIN</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-2"></div>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a th:href="@{/home}" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a  th:href="@{/admin}" class="nav-link btn btn-dark text-white" >Administrateur</a></li>
+                <li class="nav-item"><a  th:href="@{/vendeur}" class="nav-link btn btn-dark text-white">Vendeur</a></li>
+            </ul>
         </div>
     </div>
+</nav>
+
+<div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div th:if="${param.error}"  class="text-center">
+                                    <label class="col-lg-12  alert-danger">
+                                        Mot de passe ou le pseudo est incorrect
+                                    </label>
+                                </div>
+
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <form class="user" th:action="@{/login}" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                               id="exampleInputEmail"
+                                               placeholder="User name" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder="Password" name="password">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Login
+                                    </button>
+                                </form>
+                                <hr>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
+
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/sb-admin-2.min.js}"></script>
+
+<!-- Page level plugins -->
+
+<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+
+<!-- Page level custom scripts -->
+
+
 </body>
+
 </html>
+
+

@@ -17,7 +17,6 @@
         <th scope="col">ID</th>
         <th scope="col">Libelle</th>
         <th scope="col">Quantité</th>
-        <th scope="col">Stock</th>
         <th scope="col">Seuil</th>
         <th scope="col">Date de creation</th>
         <th scope="col">Prix</th>
@@ -35,7 +34,7 @@
         <td th:text="${item.prix}"></td>
         <td th:text="${item.Categorie.designation}"></td>
         <td>
-            <a th:href="@{/produits/edit/{id}(id=${item.id})}" class="btn btn-info">Edit</a>
+            <a th:href="@{/produits/edit/{id}(id=${item.id})}"  class="btn btn-info">Edit</a>
             <a th:href="@{/produits/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
             <a th:href="@{/approvisionnement/approvisionner/{id}(id=${item.id})}" class="btn btn-warning">Approvisionner </a>
         </td>

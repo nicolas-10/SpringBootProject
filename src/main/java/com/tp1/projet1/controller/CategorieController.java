@@ -14,7 +14,7 @@ public class CategorieController {
     private categorieService categorieService;
 
     @GetMapping("/afficher")
-    public String ShowListCategorie(Model model) {
+    public String ShowListCategorie(Model model){
         model.addAttribute("ListCategories", categorieService.showCategories());
         return "categorie/showCategorie";
     }

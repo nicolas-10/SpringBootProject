@@ -24,11 +24,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/home").hasAnyRole( "ADMIN","USER" )
-                .antMatchers("/produits/afficher").hasRole("ADMIN")
-                .antMatchers("/login" , "/*.css").permitAll()
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/login" , "/public/login.css").permitAll()
                 .and().formLogin().loginPage("/login")
-                .and().logout().
+                .and().logout().logoutUrl("/admin")
+                .and().logout().logoutUrl("/logout");
 
     }
 

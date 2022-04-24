@@ -24,7 +24,7 @@ public class ApprovisionnementController {
     @Autowired
     private categorieService categorieService;
 
-    @GetMapping("afficher")
+    @GetMapping("/afficher")
     public String showListApprovisionnement(Model model){
         model.addAttribute("listApprovisionnement",approvisionnementService.showApprovisionnement());
         return "approvisionnement/showApprovisionnement";

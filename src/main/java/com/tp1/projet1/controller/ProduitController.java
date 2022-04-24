@@ -26,8 +26,14 @@ public class ProduitController {
         List<Produit> produits = produitService.findAllProducts(keyword);
         model.addAttribute("Produits",produits);
         model.addAttribute("keyword",keyword);
-        return "produit/AfficheProduit";
+        return "Table";
     }
+    @GetMapping("/produitsbelowseuil")
+    public String displayProductBelow(Model model){
+        model.addAttribute("produitBelow",produitService.produitBelow());
+        return "produit/produitBelow";
+    }
+
 
     //Enregistrement
     @GetMapping("/form")

@@ -52,4 +52,11 @@ public class produitService {
         }
         return produitRepository.findAll();
     }
+
+    public String countQte(){
+        return produitRepository.CountQte();
+    }
+     public List<Produit> produitBelow(){
+        return produitRepository.produitEnDessousSeuil();
+     }
 }
