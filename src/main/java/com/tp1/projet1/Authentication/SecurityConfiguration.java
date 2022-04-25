@@ -27,8 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/login" , "/public/login.css").permitAll()
                 .and().formLogin().loginPage("/login")
-                .and().logout().logoutUrl("/admin")
-                .and().logout().logoutUrl("/logout");
+                /*.failureUrl("/login")*/
+                .and().logout().logoutUrl("/admin");
 
     }
 
